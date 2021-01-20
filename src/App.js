@@ -14,10 +14,10 @@ function App() {
     <div>
       <Router>
         <Switch>
+          <Route path='/' exact component={ProfileForm}></Route>
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
         </Switch>
-        <ProfileForm/>
         <Main />
       </Router>
 

@@ -8,7 +8,8 @@ export default function mainpage() {
   return (
     <>
       <div className="sign-div"><a href="/signup">SignUp</a><br></br>
-        <a href="login">Login</a> </div>
+        <a href="login">Login</a><br></br><a href="/">Home</a> </div>
+
       <div
         className="background"
         style={{

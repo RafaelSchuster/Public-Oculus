@@ -79,9 +79,9 @@
 }
 .profile-div{
   position: absolute;
-  left: 40%;
-  top: 30%;
-  opacity: 75%;
+  left: 41%;
+  top: 15%;
+  opacity: 80%;
 }
 .select-gender{
   width: 215px;
@@ -102,4 +102,7 @@
   position: absolute;
   top: -30px !important;
   right: -180px;
+}
+.img-btn{
+  margin-bottom: 18px !important;
 }

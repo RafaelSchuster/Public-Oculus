@@ -38,7 +38,34 @@ export default function ProfileForm() {
                         <Grid item xs={12}>
                             <FormControl>
                                 <TextField id="outlined-basic"
+                                    label="First Name"
+                                    variant="outlined"
+                                    requested='true'
+                                    name='firstName'
+                                    id='my-input'
+                                    aria-describedby='my-helper-text'
+                                    className="profile-inputs"
+                                    onChange={handleInputChange} />
+                                <TextField id="outlined-basic"
+                                    label="Last Name"
+                                    variant="outlined"
+                                    requested='true'
+                                    name='lastName'
+                                    id='my-input'
+                                    aria-describedby='my-helper-text'
+                                    className="profile-inputs"
+                                    onChange={handleInputChange} />
+                                <TextField id="outlined-basic"
                                     label="Age"
+                                    variant="outlined"
+                                    requested='true'
+                                    name='age'
+                                    type="number"
+                                    aria-describedby='my-helper-text'
+                                    className="profile-inputs"
+                                    onChange={handleInputChange} />
+                                <TextField id="outlined-basic"
+                                    label="ID Number"
                                     variant="outlined"
                                     requested='true'
                                     name='age'
@@ -64,7 +91,19 @@ export default function ProfileForm() {
                                     </MenuItem>
                                     <MenuItem value={'male'}>Male</MenuItem>
                                     <MenuItem value={'female'}>Female</MenuItem>
+                                    <MenuItem value={'other'}>Other</MenuItem>
                                 </Select>
+                                <Button
+                                    variant="contained"
+                                    component="label"
+                                    className="img-btn"
+                                >
+                                    Upload Eye Image
+                                    <input
+                                        type="file"
+                                        hidden
+                                    />
+                                </Button>
                             </FormControl>
                         </Grid>
                         <Grid item xs={12}>
