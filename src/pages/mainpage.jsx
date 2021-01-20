@@ -6,6 +6,9 @@ import Location from "../components/location"
 export default function mainpage() {
   return (
     <>
+    <div className="sign-div"><a href="/signup">SignUp</a><br></br>
+    <a href="login">Login</a> </div>
+    
         <div
           className="background"
           style={{
