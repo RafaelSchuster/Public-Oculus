@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
+import ProfileForm from './components/ProfileForm.jsx'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignUp} />
         </Switch>
+        <ProfileForm/>
         <Main />
       </Router>
 

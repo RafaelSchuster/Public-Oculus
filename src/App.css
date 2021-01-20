@@ -77,3 +77,29 @@
   left: 50%;
   font-size: 20px;
 }
+.profile-div{
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  opacity: 75%;
+}
+.select-gender{
+  width: 215px;
+}
+.profile-form{
+  width: 250px;
+  padding: 30px;
+}
+.profile-inputs{
+  position: absolute;
+  margin-bottom: 20px !important;
+}
+.profile-btn{
+  position: absolute;
+  left: 30%;
+}
+.checkbox{
+  position: absolute;
+  top: -30px !important;
+  right: -180px;
+}
