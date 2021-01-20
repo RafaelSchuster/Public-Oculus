@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 import Splash from "../backgrounddesigns/1.svg";
 import Main from "../backgrounddesigns/2.svg";
@@ -6,6 +7,16 @@ import Location from "../components/location";
 export default function mainpage() {
   return (
     <>
+      <div className="sign-div"><Button variant="outlined" color="primary" href="/" className='nav-btn'>
+          Home
+          </Button>
+        <Button variant="outlined" color="primary" href="/signup" className='nav-btn'>
+          SignUp
+        </Button>
+        <Button variant="outlined" color="primary" href="/login" className='nav-btn'>
+          Login
+        </Button> 
+        </div>
       <div
         className="background"
         style={{
@@ -15,11 +26,6 @@ export default function mainpage() {
           backgroundSize: "100% 100%",
         }}
       >
-        <div className="sign-div">
-          <a href="/signup">SignUp</a>
-          <br></br>
-          <a href="login">Login</a>{" "}
-        </div>
       </div>
       <div
         className="background"
