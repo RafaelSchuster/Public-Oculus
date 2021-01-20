@@ -50,24 +50,10 @@ export default function SignUp() {
                         <Grid item xs={12}>
                             <FormControl className='input-field'>
                                 <TextField id="outlined-basic"
-                                    label="First Name"
+                                    label="Provider's Name"
                                     variant="outlined"
                                     requested='true'
-                                    name='firstName'
-                                    id='my-input'
-                                    aria-describedby='my-helper-text'
-                                    className="inputs"
-                                    onChange={handleInputChange} />
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={12}>
-
-                            <FormControl className='input-field'>
-                                <TextField id="outlined-basic"
-                                    label="Last Name"
-                                    variant="outlined"
-                                    requested='true'
-                                    name='lastName'
+                                    name='provider'
                                     id='my-input'
                                     aria-describedby='my-helper-text'
                                     className="inputs"
