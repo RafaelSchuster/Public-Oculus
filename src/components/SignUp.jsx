@@ -26,6 +26,15 @@ export default function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const response = await fetch('https://be-oculus-app.herokuapp.com/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signUpValues )
+        })
+       const body = await response.text();
+       console.log(body)
     };
 
     return (
@@ -66,7 +75,7 @@ export default function SignUp() {
                                     label="Password"
                                     variant="outlined"
                                     requested='true'
-                                    name='password1'
+                                    name='password'
                                     id='my-input'
                                     type='password'
                                     aria-describedby='my-helper-text'

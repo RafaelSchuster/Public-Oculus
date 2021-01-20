@@ -27,6 +27,16 @@ export default function ProfileForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(JSON.stringify(profileValues))
+        const response = await fetch('https://be-oculus-app.herokuapp.com/api/patients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(profileValues)
+        })
+       const body = await response.text();
+       console.log(body)
     };
 
     return (
@@ -68,7 +78,7 @@ export default function ProfileForm() {
                                     label="ID Number"
                                     variant="outlined"
                                     requested='true'
-                                    name='age'
+                                    name='id'
                                     type="number"
                                     aria-describedby='my-helper-text'
                                     className="profile-inputs"
@@ -81,7 +91,7 @@ export default function ProfileForm() {
                                 <Select
                                     labelId="demo-simple-select-outlined-label"
                                     id="demo-simple-select-outlined"
-                                    value={'gender'}
+                                    name= "gender"
                                     className="profile-inputs"
                                     onChange={handleInputChange}
                                     label="Gender"
@@ -89,9 +99,9 @@ export default function ProfileForm() {
                                     <MenuItem value="">
                                         <em></em>
                                     </MenuItem>
-                                    <MenuItem value={'male'}>Male</MenuItem>
-                                    <MenuItem value={'female'}>Female</MenuItem>
-                                    <MenuItem value={'other'}>Other</MenuItem>
+                                    <MenuItem value={'Male'}>Male</MenuItem>
+                                    <MenuItem value={'Female'}>Female</MenuItem>
+                                    <MenuItem value={'Other'}>Other</MenuItem>
                                 </Select>
                                 <Button
                                     variant="contained"

@@ -8,15 +8,15 @@ export default function mainpage() {
   return (
     <>
       <div className="sign-div"><Button variant="outlined" color="primary" href="/" className='nav-btn'>
-          Home
+        Home
           </Button>
         <Button variant="outlined" color="primary" href="/signup" className='nav-btn'>
           SignUp
         </Button>
         <Button variant="outlined" color="primary" href="/login" className='nav-btn'>
           Login
-        </Button> 
-        </div>
+        </Button>
+      </div>
       <div
         className="background"
         style={{
