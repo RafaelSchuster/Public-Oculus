@@ -13,17 +13,20 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../css/profileform.css";
+import jwt_decode from "jwt-decode";
 
 export default function ProfileForm() {
   const [profileValues, setProfileValues] = useState({});
   const [error, setError] = useState("");
   const [image, setImage] = useState('');
   const [posted, setPosted] = useState(false);
+  
   const axios = require('axios');
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
     const profileValuesCopy = { ...profileValues };
+    
     profileValuesCopy[name] = value;
     console.log(profileValuesCopy);
     setProfileValues(profileValuesCopy);
@@ -46,7 +49,7 @@ export default function ProfileForm() {
       .then(response => response.text())
       .then(result =>{   
         console.log(result);
-        setProfileValues({...profileValues, results: result, providerId: '123'});
+        setProfileValues({...profileValues, results: result});
         setPosted(true);
         console.log(profileValues);
         
@@ -55,6 +58,17 @@ export default function ProfileForm() {
       .catch(error => console.log('error', error));
       
   }
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
+    
+    if(token){
+      const data = jwt_decode(token);
+      const id = data.id;
+      console.log(id);
+      setProfileValues({...profileValues, providerId: id});
+    }
+  },[])
   //to wait for setprofile values to update
   useEffect(()=>{
     if(posted){

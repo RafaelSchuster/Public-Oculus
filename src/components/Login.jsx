@@ -32,7 +32,8 @@ export default function Login() {
             body: JSON.stringify(loginValues )
         })
        const body = await response.text();
-       console.log(body)    
+       localStorage.setItem('token', body);
+       window.location = '/';  
     };
 
     return (
