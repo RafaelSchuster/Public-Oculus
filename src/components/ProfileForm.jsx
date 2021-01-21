@@ -17,6 +17,8 @@ import "../css/profileform.css";
 export default function ProfileForm() {
   const [profileValues, setProfileValues] = useState({});
   const [error, setError] = useState("");
+  const [image, setImage] = useState('');
+  const axios = require('axios');
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
@@ -25,20 +27,25 @@ export default function ProfileForm() {
     console.log(profileValuesCopy);
     setProfileValues(profileValuesCopy);
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(JSON.stringify(profileValues))
-    const response = await fetch('https://be-oculus-app.herokuapp.com/api/patients', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(profileValues)
-    })
-   const body = await response.text();
-   console.log(body)
-};
-
+  
+  const handleSubmit = async(e) =>{
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "image/jpeg");
+    
+    var file = image;
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: file,
+      redirect: 'follow'
+    };
+    
+    fetch("http://13.59.16.153:8080/my_eye_is_screwed", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
   return (
     <div className="profile-div">
       <Grid container justify="center" alignItems="center" spacing={5}>
@@ -119,7 +126,12 @@ export default function ProfileForm() {
                   className="img-btn"
                 >
                   Upload Eye Image
-                  <input type="file" hidden />
+                  <input type="file" hidden onChange={(e)=>{
+                    //setImage(e.target.files[0])
+                    const image = e.target.files[0];
+                    setImage(image);
+                    
+                    }} />
                 </Button>
               </FormControl>
             </Grid>
