@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   FormControl,
@@ -18,6 +18,7 @@ export default function ProfileForm() {
   const [profileValues, setProfileValues] = useState({});
   const [error, setError] = useState("");
   const [image, setImage] = useState('');
+  const [posted, setPosted] = useState(false);
   const axios = require('axios');
 
   const handleInputChange = (e) => {
@@ -43,9 +44,25 @@ export default function ProfileForm() {
     
     fetch("http://13.59.16.153:8080/my_eye_is_screwed", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result =>{   
+        console.log(result);
+        setProfileValues({...profileValues, results: result, providerId: '123'});
+        setPosted(true);
+        console.log(profileValues);
+        
+        
+      })
       .catch(error => console.log('error', error));
+      
   }
+  //to wait for setprofile values to update
+  useEffect(()=>{
+    if(posted){
+    axios.post(`https://be-oculus-app.herokuapp.com/api/patients`, profileValues).then(res=>{
+          console.log(res.data);
+        })
+      }
+  },[posted])
   return (
     <div className="profile-div">
       <Grid container justify="center" alignItems="center" spacing={5}>
@@ -92,7 +109,7 @@ export default function ProfileForm() {
                   label="ID Number"
                   variant="outlined"
                   requested="true"
-                  name="age"
+                  name="id"
                   type="number"
                   aria-describedby="my-helper-text"
                   className="profile-inputs"
@@ -109,6 +126,7 @@ export default function ProfileForm() {
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   value={"gender"}
+                  name="gender"
                   className="profile-inputs"
                   onChange={handleInputChange}
                   label="Gender"
@@ -116,9 +134,9 @@ export default function ProfileForm() {
                   <MenuItem value="">
                     <em></em>
                   </MenuItem>
-                  <MenuItem value={"male"}>Male</MenuItem>
-                  <MenuItem value={"female"}>Female</MenuItem>
-                  <MenuItem value={"other"}>Other</MenuItem>
+                  <MenuItem value={"Male"}>Male</MenuItem>
+                  <MenuItem value={"Female"}>Female</MenuItem>
+                  <MenuItem value={"Other"}>Other</MenuItem>
                 </Select>
                 <Button
                   variant="contained"
