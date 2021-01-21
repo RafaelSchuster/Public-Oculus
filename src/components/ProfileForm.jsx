@@ -14,13 +14,15 @@ import {
 import { Link } from "react-router-dom";
 import "../css/profileform.css";
 import jwt_decode from "jwt-decode";
+import ResultModal from "./ResultModal";
 
 export default function ProfileForm() {
   const [profileValues, setProfileValues] = useState({});
   const [error, setError] = useState("");
   const [image, setImage] = useState('');
   const [posted, setPosted] = useState(false);
-  
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState('');
   const axios = require('axios');
 
   const handleInputChange = (e) => {
@@ -49,8 +51,11 @@ export default function ProfileForm() {
       .then(response => response.text())
       .then(result =>{   
         console.log(result);
+        console.log(JSON.parse(result));
+        setModalData((JSON.parse(result).prob*100).toFixed(2));
         setProfileValues({...profileValues, results: result});
         setPosted(true);
+        setShowModal(true);
         console.log(profileValues);
         
         
@@ -79,6 +84,7 @@ export default function ProfileForm() {
   },[posted])
   return (
     <div className="profile-div">
+      <ResultModal show={showModal} data={modalData}></ResultModal>
       <Grid container justify="center" alignItems="center" spacing={5}>
         <Paper>
           <div className="profile-form">

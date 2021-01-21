@@ -42,6 +42,14 @@ export default function mainpage() {
           >
             Login
           </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            href="/results"
+            className="nav-btn"
+          >
+            Results
+          </Button>
         </div>
       </div>
       <div
