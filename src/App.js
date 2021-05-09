@@ -11,7 +11,6 @@ import SignUp from './components/SignUp.jsx';
 import ProfileForm from './components/ProfileForm.jsx'
 import jwt_decode from "jwt-decode";
 
-
 function App() {
   useEffect(()=>{
     const token = localStorage.getItem('token');
